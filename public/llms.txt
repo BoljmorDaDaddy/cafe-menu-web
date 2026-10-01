@@ -1,0 +1,26 @@
+# Aura Artisan Cafe & Bistro
+
+> High-end specialty coffee shop & artisanal kitchen serving breakfast, first courses, main courses, organic salads, specialty coffee, and wellness teas in Ulaanbaatar, Mongolia.
+
+## Overview
+- Business: Aura Artisan Cafe & Bistro
+- Atmosphere: Warm luxury, minimal, glassmorphic design, cozy ambient lighting
+- Cuisine: Modern European & Mongolian Fusion, Specialty Coffee (100% Arabica), Artisan Bakery
+- Service Style: Dine-in digital menu browsing, interactive in-cafe TV signage, and AI assistant
+- Customer Ordering: Pure visual menu with complete ingredient breakdowns and allergen disclosures; no forced registration or cookie barriers.
+
+## Menu Categories
+- Breakfast (Өглөөний цай): Brioche Avocado Toast with Poached Eggs, Classic English Breakfast, French Butter Croissants, Organic Greek Yogurt Granola Bowls.
+- First Courses / Soups (1 дүгээр хоол): Creamy Wild Mushroom Velouté with Truffle Oil, Roasted Butternut Squash Soup, Traditional Dried Beef Broth (Борцтой шөл), Tuscan Sun-Dried Tomato Soup.
+- Second Courses / Main (2 дугаар хоол): Prime Black Angus Ribeye Steak (250g), Pan-Seared Atlantic Salmon, Truffle Chicken Tagliatelle, Artisan Smash Burgers.
+- Salads (Салад): Grilled Chicken Caesar, Italian Burrata Caprese, Superfood Quinoa & Avocado Bowls.
+- Coffee (Кофе): Salted Caramel Silk Macchiato, Artisan Flat White, Spanish Condensed Milk Iced Latte, Cold Brew Reserve.
+- Cold Drinks (Хүйтэн ундаа): Passion Fruit & Mint Coolers, Kyoto Ceremonial Uji Matcha Latte, Wild Acai Smoothies.
+- Tea (Цай): Hot Wild Sea Buckthorn & Ginger Tea, Imperial Jasmine Green Tea, Lingonberry Herbal Infusion.
+
+## Operations
+- Opening Hours: Daily 08:00 - 22:00
+- Location: Ulaanbaatar, Sukhbaatar District, 1st Khoroo, Central Tower 1st Floor
+- Wi-Fi: High-speed guest network available for remote work and cafe guests
+- In-Cafe Signage: Dynamic 16:9 TV Carousel with real-time Supabase sync, controllable via protected Admin dashboard.
+- RAG AI: Bottom-right interactive assistant providing menu pairings, allergen info, and cafe recommendations.

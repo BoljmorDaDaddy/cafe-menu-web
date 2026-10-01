@@ -1,0 +1,639 @@
+[
+  {
+  "design_name": "split pro",
+  "design_type": "split pro",
+  "display_context": {
+    "device": "landscape restaurant TV",
+    "purpose": "digital menu board",
+    "viewing_distance": "2–5 meters",
+    "orientation": "landscape",
+    "recommended_aspect_ratio": "16:9",
+    "screen_usage": "full_screen",
+    "browser_ui": false,
+    "scrolling": false,
+    "interaction": false
+  },
+
+  "overall_composition": {
+    "layout": "two-part horizontal split",
+    "visual_balance": "approximately 45% information / 55% food imagery",
+    "primary_focus": "large appetizing food photography",
+    "secondary_focus": "large readable menu typography",
+    "style": "premium casual restaurant digital signage",
+    "density": "low to medium",
+    "whitespace": "generous",
+    "visual_flow": "category heading → menu items → food image"
+  },
+
+  "screen_background": {
+    "color": "warm cream / off-white",
+    "appearance": "slightly warm matte surface",
+    "texture": "very subtle",
+    "purpose": "prevent the screen from appearing overly bright while maintaining high text contrast",
+    "edge_to_edge": true
+  },
+
+  "left_information_panel": {
+    "position": {
+      "left": "0%",
+      "top": "0%",
+      "width": "47%",
+      "height": "100%"
+    },
+
+    "safe_area": {
+      "left": "5%",
+      "right": "4%",
+      "top": "7%",
+      "bottom": "7%"
+    },
+
+    "alignment": "left",
+
+    "category_label": {
+      "text": "SIGNATURE",
+      "position": "top-left",
+      "size": "small",
+      "font": "bold condensed sans-serif",
+      "weight": 700,
+      "case": "uppercase",
+      "letter_spacing": "0.08em",
+      "color": "#38342E"
+    },
+
+    "category_title": {
+      "text": "BOWLS",
+      "position": "below category label",
+      "size": "very large",
+      "font": "heavy condensed display sans-serif",
+      "weight": 900,
+      "case": "uppercase",
+      "color": "#151515",
+      "line_height": 0.85,
+      "visual_priority": "very_high"
+    },
+
+    "menu_list": {
+      "position": "below category title",
+      "alignment": "left",
+      "width": "92%",
+
+      "item": {
+        "layout": "two-line menu item",
+        "top_line": {
+          "layout": "name left / price right",
+          "name": {
+            "font": "bold condensed sans-serif",
+            "weight": 800,
+            "size": "large",
+            "case": "uppercase",
+            "color": "#171717"
+          },
+          "price": {
+            "font": "bold sans-serif",
+            "weight": 600,
+            "size": "medium-large",
+            "color": "#292620"
+          }
+        },
+
+        "description": {
+          "position": "directly below item name",
+          "font": "clean sans-serif",
+          "weight": 400,
+          "size": "small",
+          "line_height": 1.25,
+          "color": "#625D54",
+          "maximum_lines": 2
+        },
+
+        "spacing": {
+          "between_name_and_description": "4–6px",
+          "between_items": "28–40px"
+        }
+      }
+    }
+  },
+
+  "right_food_panel": {
+    "position": {
+      "left": "44%",
+      "top": "0%",
+      "width": "56%",
+      "height": "100%"
+    },
+
+    "purpose": "large visual representation of the food",
+
+    "hero_image": {
+      "shape": "large circular crop",
+      "size": "approximately 78–85% of screen height",
+      "position": "center-right",
+      "horizontal_alignment": "center",
+      "vertical_alignment": "center",
+      "object_fit": "cover",
+      "object_position": "center",
+      "overflow": "hidden"
+    },
+
+    "image_spacing": {
+      "top_margin": "7–9%",
+      "bottom_margin": "7–9%",
+      "right_margin": "3–5%"
+    },
+
+    "image_style": {
+      "photography": "professional food photography",
+      "lighting": "warm and bright",
+      "saturation": "high enough to make ingredients visually appetizing",
+      "contrast": "medium-high",
+      "sharpness": "high",
+      "background": "minimal",
+      "focus": "food bowl"
+    },
+
+    "shadow": {
+      "enabled": true,
+      "type": "soft natural shadow",
+      "opacity": "15–25%",
+      "blur": "20–35px",
+      "offset": "0 8px"
+    }
+  },
+
+  "tv_readability": {
+    "important": true,
+
+    "design_principle": "Everything important must be readable without approaching the TV.",
+
+    "minimum_text_size": {
+      "category_label": "24–32px equivalent at 1080p",
+      "category_title": "70–110px equivalent at 1080p",
+      "menu_name": "30–42px equivalent at 1080p",
+      "price": "28–38px equivalent at 1080p",
+      "description": "18–24px equivalent at 1080p"
+    },
+
+    "contrast": {
+      "text_to_background": "high",
+      "avoid_light_gray_text": true,
+      "avoid_thin_fonts": true
+    },
+
+    "viewing_distance": {
+      "short_range": "2m",
+      "normal_range": "3–4m",
+      "long_range": "5m+"
+    }
+  },
+
+  "visual_hierarchy": {
+    "priority_1": {
+      "element": "hero food image",
+      "reason": "Immediately communicates what the restaurant is selling"
+    },
+
+    "priority_2": {
+      "element": "BOWLS",
+      "reason": "Immediately communicates the menu category"
+    },
+
+    "priority_3": {
+      "element": "menu item names",
+      "reason": "Allows customers to identify available dishes quickly"
+    },
+
+    "priority_4": {
+      "element": "prices",
+      "reason": "Must be recognizable at a glance"
+    },
+
+    "priority_5": {
+      "element": "descriptions",
+      "reason": "Provides supporting information without competing with the main elements"
+    }
+  },
+
+  "tv_safe_zone": {
+    "enabled": true,
+    "recommended_margin": "5%",
+    "reason": "Protects important text from overscan and edge cropping on commercial or older TVs",
+    "critical_elements": [
+      "category label",
+      "category title",
+      "menu names",
+      "prices"
+    ]
+  },
+
+  "color_system": {
+    "background": "#F1E7D5",
+    "primary_text": "#151515",
+    "secondary_text": "#625D54",
+    "price_text": "#292620",
+    "food_colors": [
+      "#4D863F",
+      "#D9A932",
+      "#B84B32",
+      "#765033"
+    ]
+  },
+
+  "screen_behavior": {
+    "static_design": true,
+    "scrolling": false,
+    "hover_states": false,
+    "buttons": false,
+    "navigation": false,
+    "interaction": false,
+    "auto_fit": true,
+    "full_bleed": true
+  },
+
+  "recommended_resolution": {
+    "standard": "1920x1080",
+    "high_resolution": "3840x2160",
+    "design_reference": "1920x1080",
+    "scaling": "vector/text should remain sharp at 4K"
+  },
+
+  "digital_signage_rules": {
+    "keep_menu_items_limited": true,
+    "recommended_items_per_screen": "3–5",
+    "avoid_information_overload": true,
+    "use_large_food_images": true,
+    "keep_prices_visually_distinct": true,
+    "maintain_consistent_spacing": true,
+    "do_not_use_small_web_ui_elements": true,
+    "do_not_require_user_interaction": true
+  },
+
+  "animation_ready": {
+    "enabled": true,
+    "recommended_transition": "subtle crossfade or horizontal slide",
+    "transition_duration": "500–800ms",
+    "menu_cycle": "optional",
+    "image_animation": "very subtle slow zoom",
+    "text_animation": "fade in",
+    "avoid": [
+      "rapid flashing",
+      "bouncing text",
+      "excessive motion",
+      "fast zooms"
+    ]
+  },
+
+  "final_visual_description": "A full-screen 16:9 restaurant TV menu with a warm cream background. The left side contains a compact but highly readable menu hierarchy: a small uppercase category label at the top, followed by a very large bold 'BOWLS' heading. Beneath it are three clearly separated menu items, each using a large uppercase dish name aligned left, a clearly visible price aligned right, and a short two-line description underneath. The right side is dominated by a large circular professional food photograph showing a colorful bowl with grilled chicken, vegetables, rice, beans, corn, avocado and greens. The food image occupies most of the right half and acts as the primary visual attraction. The composition has generous empty space around the typography, strong contrast, large fonts, and no interactive elements. It is specifically optimized for customers standing several meters away from a wall-mounted restaurant TV rather than for viewing on a phone or website."
+  },
+  {
+  "design_name": "all item on the menu board",
+  "screen_type": "all_items_menu_board",
+  "purpose": "Main restaurant TV menu screen showing the complete menu at a glance",
+  "display_context": {
+    "device": "wall-mounted restaurant TV",
+    "orientation": "landscape",
+    "aspect_ratio": "16:9",
+    "recommended_resolution": "1920x1080",
+    "display_mode": "full_screen",
+    "interaction": false,
+    "scrolling": false,
+    "static_layout": true,
+    "viewing_distance": "2–5 meters"
+  },
+
+  "design_concept": {
+    "style": "premium modern digital restaurant menu",
+    "layout_type": "multi-column menu catalog",
+    "main_goal": "Allow customers to see all available menu categories and items simultaneously for 2 minutes or more without scrolling or interaction",
+    "visual_character": "clean, organized, warm, food-focused, compact",
+    "information_density": "medium-high",
+    "priority": "menu coverage and readability rather than one large hero item"
+  },
+
+  "screen_structure": {
+    "background": {
+      "type": "full-screen photographic background",
+      "appearance": "softly blurred restaurant / food environment",
+      "color_temperature": "warm",
+      "brightness": "low-medium",
+      "blur": "strong",
+      "overlay": {
+        "enabled": true,
+        "type": "dark translucent overlay",
+        "opacity": "approximately 20–35%"
+      }
+    },
+
+    "content_area": {
+      "position": "centered",
+      "width": "approximately 96% of screen",
+      "height": "approximately 88% of screen",
+      "top_margin": "4–6%",
+      "bottom_margin": "4–6%",
+      "left_margin": "2%",
+      "right_margin": "2%"
+    },
+
+    "category_columns": {
+      "layout": "three-column grid",
+      "columns": [
+        {
+          "name": "Drinks",
+          "width": "approximately 27%"
+        },
+        {
+          "name": "Food",
+          "width": "approximately 29%"
+        },
+        {
+          "name": "Packages",
+          "width": "approximately 44%"
+        }
+      ],
+      "gap": "approximately 1%"
+    }
+  },
+
+  "category_headers": {
+    "position": "top of each column",
+    "alignment": "center",
+    "style": {
+      "font_family": "elegant serif or refined display serif",
+      "weight": 500,
+      "size": "medium-large",
+      "color": "#FFFFFF",
+      "case": "title case",
+      "letter_spacing": "slightly expanded",
+      "text_shadow": "subtle"
+    },
+    "examples": [
+      "Drinks",
+      "Food",
+      "Packages"
+    ],
+    "header_height": "approximately 7–9% of screen"
+  },
+
+  "menu_cards": {
+    "style": "rounded translucent/off-white cards",
+    "background": "#F7F3EC",
+    "opacity": "approximately 92–97%",
+    "border_radius": "8–14px",
+    "border": {
+      "enabled": true,
+      "color": "rgba(255,255,255,0.7)",
+      "width": "1–2px"
+    },
+    "shadow": {
+      "enabled": true,
+      "blur": "8–16px",
+      "opacity": "10–20%"
+    },
+    "internal_padding": "10–18px"
+  },
+
+  "featured_items": {
+    "purpose": "Give each major category one or more visually prominent products",
+    "layout": "image + item information",
+    "image_position": "top or left depending on card size",
+    "image_size": "30–55% of card area",
+    "image_shape": "rounded rectangle or circular crop",
+    "image_fit": "cover",
+    "item_name": {
+      "font": "bold condensed sans-serif",
+      "weight": 700,
+      "size": "medium",
+      "case": "uppercase",
+      "color": "#3A332D"
+    },
+    "description": {
+      "font": "clean sans-serif",
+      "weight": 400,
+      "size": "small",
+      "line_height": 1.15,
+      "color": "#766E65",
+      "maximum_lines": 2
+    },
+    "price": {
+      "font": "bold sans-serif",
+      "weight": 600,
+      "size": "medium",
+      "color": "#3A332D"
+    }
+  },
+
+  "compact_items": {
+    "purpose": "Display additional products without consuming excessive screen space",
+    "layout": "thumbnail + name/description + price",
+    "thumbnail": {
+      "shape": "circle or rounded square",
+      "size": "approximately 32–42px at 1080p"
+    },
+    "item_name": {
+      "font": "bold condensed sans-serif",
+      "size": "18–24px at 1080p",
+      "weight": 700,
+      "color": "#39332D"
+    },
+    "description": {
+      "font": "sans-serif",
+      "size": "13–17px at 1080p",
+      "color": "#766F67"
+    },
+    "price": {
+      "font": "bold sans-serif",
+      "size": "17–22px at 1080p",
+      "weight": 600,
+      "alignment": "right"
+    },
+    "divider": {
+      "enabled": true,
+      "style": "very subtle horizontal divider",
+      "color": "#D8D0C5"
+    }
+  },
+
+  "category_layouts": {
+    "drinks": {
+      "layout": "one featured card followed by compact item list",
+      "featured_card": {
+        "height": "approximately 36–40%"
+      },
+      "compact_list": {
+        "height": "approximately 50–55%",
+        "items_visible": "4–6"
+      }
+    },
+
+    "food": {
+      "layout": "featured food cards followed by compact food items",
+      "featured_cards": {
+        "layout": "2-column mini-grid",
+        "height": "approximately 40%"
+      },
+      "compact_list": {
+        "height": "approximately 45–50%"
+      }
+    },
+
+    "packages": {
+      "layout": "featured package cards at top followed by dense package list",
+      "featured_cards": {
+        "layout": "horizontal multi-card row",
+        "height": "approximately 40%"
+      },
+      "compact_list": {
+        "layout": "single-column",
+        "height": "approximately 45–50%"
+      }
+    }
+  },
+
+  "visual_hierarchy": {
+    "level_1": "category names",
+    "level_2": "featured product photographs",
+    "level_3": "product names",
+    "level_4": "prices",
+    "level_5": "short descriptions"
+  },
+
+  "information_architecture": {
+    "screen_reading_order": [
+      "Drinks",
+      "Food",
+      "Packages"
+    ],
+    "within_each_category": [
+      "featured products",
+      "product name",
+      "short description",
+      "price",
+      "additional products"
+    ]
+  },
+
+  "tv_readability": {
+    "principle": "The screen must be readable from several meters away",
+    "category_title": {
+      "minimum": "32px at 1080p",
+      "recommended": "40–52px"
+    },
+    "featured_item_name": {
+      "minimum": "24px",
+      "recommended": "28–34px"
+    },
+    "compact_item_name": {
+      "minimum": "18px",
+      "recommended": "20–24px"
+    },
+    "price": {
+      "minimum": "18px",
+      "recommended": "22–28px"
+    },
+    "description": {
+      "minimum": "13px",
+      "recommended": "15–18px"
+    },
+    "rules": [
+      "Do not use thin fonts for important information",
+      "Do not place prices too close to the screen edge",
+      "Keep descriptions short",
+      "Maintain strong contrast between text and card backgrounds",
+      "Avoid overcrowding the lower half of the screen"
+    ]
+  },
+
+  "background_and_cards": {
+    "relationship": "The background provides atmosphere while the cards provide readability",
+    "background_focus": "intentionally blurred",
+    "card_opacity": "high",
+    "visual_effect": "soft glass-like menu panels",
+    "goal": "Separate menu information from the background without making the screen look like a traditional web page"
+  },
+
+  "bottom_branding": {
+    "position": "bottom center",
+    "style": "small elegant uppercase or serif text",
+    "color": "rgba(255,255,255,0.75)",
+    "purpose": "subtle brand/message area",
+    "size": "small",
+    "must_not_compete_with_menu": true
+  },
+
+  "spacing": {
+    "screen_outer_padding": "2–3%",
+    "column_gap": "1–1.5%",
+    "category_header_to_cards": "8–16px",
+    "card_internal_padding": "10–18px",
+    "item_vertical_spacing": "8–14px",
+    "section_spacing": "12–20px"
+  },
+
+  "color_palette": {
+    "background": "#403B35",
+    "card": "#F5F0E8",
+    "primary_text": "#302A25",
+    "secondary_text": "#766E65",
+    "price": "#332C26",
+    "divider": "#D8D0C5",
+    "header": "#FFFFFF",
+    "accent": "#A87943"
+  },
+
+  "responsive_screen_behavior": {
+    "16_9_tv": {
+      "layout": "three-column",
+      "status": "primary"
+    },
+    "4k_tv": {
+      "layout": "same 16:9 composition",
+      "scaling": "2x pixel density",
+      "text": "remain vector/sharp"
+    },
+    "portrait": {
+      "supported": false
+    },
+    "mobile": {
+      "supported": false,
+      "reason": "This design is intended specifically for digital signage rather than a mobile menu"
+    }
+  },
+
+  "content_rules": {
+    "items_per_screen": "all available menu items, provided readability is maintained",
+    "recommended_max_description_length": "1–2 short lines",
+    "price_format": "consistent currency and decimal formatting",
+    "item_names": "short and visually dominant",
+    "category_count": "3–5 categories per screen",
+    "images": "Use real food/product photography whenever available"
+  },
+
+  "animation": {
+    "default": "static",
+    "optional": true,
+    "recommended": {
+      "category_fade": "300–500ms",
+      "background_motion": "none or extremely subtle",
+      "card_motion": "none",
+      "screen_transition": "500–800ms crossfade"
+    },
+    "purpose": "Maintain a calm, premium restaurant-display appearance"
+  },
+
+  "technical_implementation": {
+    "recommended_canvas": "1920x1080",
+    "css_layout": "CSS Grid",
+    "grid_template_columns": "27% 29% 44%",
+    "box_sizing": "border-box",
+    "overflow": "hidden",
+    "viewport_units": "vw/vh for proportional positioning",
+    "image_handling": "object-fit: cover",
+    "card_radius": "8–14px",
+    "safe_area": "5%",
+    "font_rendering": "high-quality anti-aliased",
+    "screen_refresh": "static HTML/CSS/React render suitable for digital signage"
+  },
+
+  "overall_visual_description": "A full-screen 16:9 restaurant TV menu displaying the entire menu at once. A softly blurred, warm restaurant or food photograph fills the background, creating atmosphere without competing with the menu. Three clearly separated columns sit across the screen: Drinks on the left, Food in the center, and Packages on the right. Each category has an elegant white heading positioned above a collection of light cream rounded cards. Larger featured cards contain attractive food or drink photographs with the item name, short description, and price, while smaller products are arranged beneath them in compact rows with small thumbnails, descriptions, and prices. The cards create a clean information layer over the photographic background. The result feels like a premium restaurant digital signage screen rather than a website: no navigation bars, no buttons, no scrolling, and no unnecessary interface elements. The entire menu remains visible simultaneously so a customer can understand the available categories and scan prices from several meters away."
+  }
+]

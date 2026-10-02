@@ -252,7 +252,57 @@ export const TvDisplay: React.FC<TvDisplayProps> = ({ slides, menuItems, setting
           </div>
         )}
 
-        {(!['split_promo', 'hero_showcase', 'menu_board'].includes(slide.template)) && (
+        {slide.template === 'picture_no_bg' && (
+          <div className="h-full w-full relative animate-fadeIn overflow-hidden bg-gradient-to-br from-[#1a120b] via-[#0d0d0d] to-black flex items-center justify-center">
+            {/* Soft radial glow behind product — no photo background, no blur fill */}
+            <div
+              className="absolute inset-0 pointer-events-none"
+              style={{
+                background:
+                  'radial-gradient(ellipse 60% 55% at 50% 55%, rgba(196,154,69,0.22) 0%, rgba(196,154,69,0.06) 45%, transparent 70%)',
+              }}
+            />
+            <div className="relative z-10 h-full w-full grid grid-cols-1 lg:grid-cols-2 items-center gap-[2vw] px-[5vw] py-[5vh] min-h-0 overflow-hidden">
+              {/* Text side */}
+              <div className="min-w-0 flex flex-col items-start lg:items-start items-center text-center lg:text-left justify-center gap-[1.8vh] overflow-hidden order-2 lg:order-1">
+                {slide.badge && (
+                  <span className="px-[1.2vw] py-[0.8vh] rounded-full bg-amber-500 text-stone-950 text-[clamp(0.7rem,1.8vmin,1rem)] font-bold uppercase tracking-widest whitespace-nowrap max-w-full truncate">
+                    {slide.badge}
+                  </span>
+                )}
+                <h1 className="font-black uppercase text-white leading-[0.95] text-[clamp(2rem,7vmin,6.5rem)] break-words line-clamp-3 text-balance drop-shadow-2xl">
+                  {slide.title}
+                </h1>
+                {slide.subtitle && (
+                  <p className="text-stone-300 font-light text-[clamp(0.95rem,2.4vmin,1.6rem)] leading-snug line-clamp-2 text-balance max-w-[90%]">
+                    {slide.subtitle}
+                  </p>
+                )}
+                {slide.price_highlight && (
+                  <div className="font-serif font-bold text-amber-400 text-[clamp(1.8rem,6vmin,4.5rem)] leading-none whitespace-nowrap drop-shadow-lg">
+                    {slide.price_highlight}
+                  </div>
+                )}
+              </div>
+              {/* Picture side — transparent PNG floats, fully visible, never cropped */}
+              <div className="relative min-h-0 min-w-0 h-full w-full flex items-center justify-center order-1 lg:order-2 overflow-hidden">
+                {slide.image_url ? (
+                  <img
+                    src={slide.image_url}
+                    alt={slide.title}
+                    draggable={false}
+                    className="max-h-full max-w-full h-full w-full object-contain object-center drop-shadow-[0_25px_60px_rgba(0,0,0,0.65)]"
+                    style={{ filter: 'drop-shadow(0 25px 60px rgba(0,0,0,0.65))' }}
+                  />
+                ) : (
+                  <div className="text-stone-500 font-serif text-xl">No image</div>
+                )}
+              </div>
+            </div>
+          </div>
+        )}
+
+        {(!['split_promo', 'hero_showcase', 'menu_board', 'picture_no_bg'].includes(slide.template)) && (
           <div className="h-full w-full flex items-center justify-center bg-stone-900 animate-fadeIn relative overflow-hidden">
             {slide.image_url && (
               <img

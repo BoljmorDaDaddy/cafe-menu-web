@@ -25,7 +25,7 @@ export interface MenuItem {
   updated_at?: string;
 }
 
-export type SlideTemplate = 'hero_showcase' | 'split_promo' | 'menu_board' | 'special_offer';
+export type SlideTemplate = 'hero_showcase' | 'split_promo' | 'menu_board' | 'special_offer' | 'picture_no_bg';
 
 export interface TVSlide {
   id: string;

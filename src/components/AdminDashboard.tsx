@@ -1011,6 +1011,7 @@ ALTER PUBLICATION supabase_realtime ADD TABLE public.cafe_settings;`;
                   <option value="hero_showcase">Hero Showcase (Бүтэн дэлгэцийн тансаг зурагтай)</option>
                   <option value="menu_board">Menu Board (Дижитал 4 хоолны үнэтэй самбар)</option>
                   <option value="special_offer">Special Offer (Онцгой хямдрал, комбо санал)</option>
+                  <option value="picture_no_bg">Picture No BG (Зураг дэвсгэргүй — PNG бүтээгдэхүүн)</option>
                 </select>
               </div>
 

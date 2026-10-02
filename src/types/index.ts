@@ -49,6 +49,8 @@ export interface CafeSettings {
   phone: string;
   address: string;
   opening_hours: string;
+  wifi_name: string;
+  wifi_pass: string;
   rag_api_url: string;
   admin_pin: string;
   updated_at?: string;
@@ -59,5 +61,5 @@ export interface ChatMessage {
   sender: 'user' | 'assistant';
   text: string;
   timestamp: string;
-  suggested_items?: MenuItem[];
+  suggested_items?: MenuItem[]; // Optional suggested menu items from RAG
 }

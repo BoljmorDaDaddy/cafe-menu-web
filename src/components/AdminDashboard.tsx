@@ -10,7 +10,6 @@ import {
   CheckCircle2,
   Copy,
   Check,
-  Lock,
   LogOut,
   Image as ImageIcon,
 } from 'lucide-react';
@@ -62,16 +61,8 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
   const [isCopiedSql, setIsCopiedSql] = useState(false);
   const [saveSuccessMsg, setSaveSuccessMsg] = useState('');
 
-  // Handle PIN authentication
-  const handlePinSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (pinInput === (settings.admin_pin || '8888')) {
-      setIsAuthenticated(true);
-      setPinError(false);
-    } else {
-      setPinError(true);
-    }
-  };
+  // PIN authentication is handled by LoginPage in App.tsx (no dead code here)
+
 
   // Open Menu Item Create/Edit Modal
   const handleOpenMenuModal = (item?: MenuItem) => {
@@ -301,7 +292,11 @@ ALTER PUBLICATION supabase_realtime ADD TABLE public.cafe_settings;`;
             </button>
 
             <button
-              onClick={() => setIsAuthenticated(false)}
+              onClick={() => {
+                // Authentication is now handled by App.tsx and LoginPage
+                localStorage.removeItem('admin_session_expiry');
+                window.location.reload();
+              }}
               className="p-2 rounded-xl bg-white/5 hover:bg-white/10 text-stone-400 hover:text-stone-200"
               title="Гарах"
             >

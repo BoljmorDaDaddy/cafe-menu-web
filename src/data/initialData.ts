@@ -524,6 +524,8 @@ export const INITIAL_SETTINGS: CafeSettings = {
   phone: '+976 8911 9439',
   address: 'Эрдэнэт хот, 4-25, 1-р давхар',
   opening_hours: 'Даваа - Бямба 08:00 - 20:00',
+  wifi_name: 'AuraCafe_Guest',
+  wifi_pass: 'auracoffee2026',
   rag_api_url: '',
   admin_pin: '8888'
 };

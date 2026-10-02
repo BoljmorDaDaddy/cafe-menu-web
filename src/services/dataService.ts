@@ -1,5 +1,5 @@
 import { supabase } from '../utils/supabase';
-import type { MenuItem, TVSlide, CafeSettings } from '../types';
+import type { MenuItem, TVSlide, CafeSettings, MenuCategory } from '../types';
 import { INITIAL_MENU_ITEMS, INITIAL_SLIDES, INITIAL_SETTINGS } from '../data/initialData';
 
 const MENU_STORAGE_KEY = 'aura_cafe_menu_items_v1';
@@ -141,7 +141,7 @@ class DataService {
     return INITIAL_MENU_ITEMS;
   }
 
-  public async saveMenuItem(item: Partial<MenuItem> & { name: string; category: any; price: any; image_url: string }): Promise<MenuItem> {
+  public async saveMenuItem(item: Partial<MenuItem> & { name: string; category: MenuCategory; price: number; image_url: string }): Promise<MenuItem> {
     const isNew = !item.id;
     const now = new Date().toISOString();
 
@@ -153,11 +153,15 @@ class DataService {
 
     // 2. Construct a "Clean" object to avoid 400 Bad Request
     // We explicitly cast types and provide defaults for EVERY field
+    const validCategories: MenuCategory[] = ['breakfast', 'soup', 'main', 'salad', 'coffee', 'cold_drinks', 'tea'];
+    const safeCategory: MenuCategory = validCategories.includes(item.category as MenuCategory)
+      ? (item.category as MenuCategory)
+      : 'main';
     const itemToSave: MenuItem = {
       id: item.id || `item-${Date.now()}-${Math.random().toString(36).substring(2, 7)}`,
       name: String(item.name || 'Unnamed Item'),
       name_en: String(item.name_en || ''),
-      category: String(item.category || 'main'),
+      category: safeCategory,
       type: ['coffee', 'cold_drinks', 'tea'].includes(item.category) ? 'drink' : 'food',
       price: Number(item.price) || 0,
       image_url: String(finalImageUrl || ''),

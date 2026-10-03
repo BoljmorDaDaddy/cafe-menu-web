@@ -160,10 +160,16 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
     e.preventDefault();
     if (!editingSlide || !editingSlide.title) return;
 
-    await dataService.saveSlide(editingSlide as any);
-    setIsSlideModalOpen(false);
-    setEditingSlide(null);
-    showNotice('TV Слайд амжилттай хадгалагдлаа! Дэлгэц дээр шууд шинэчлэгдэнэ.');
+    try {
+      const saved = await dataService.saveSlide(editingSlide as any);
+      console.log('✅ Slide saved:', saved.id);
+      setIsSlideModalOpen(false);
+      setEditingSlide(null);
+      showNotice('TV Слайд амжилттай хадгалагдлаа! Дэлгэц дээр шууд шинэчлэгдэнэ.');
+    } catch (err) {
+      console.error('Slide save failed:', err);
+      showNotice('Хадгалахад алдаа гарлаа. Console шалгана уу.');
+    }
   };
 
   // Delete Slide

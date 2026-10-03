@@ -254,13 +254,22 @@ class DataService {
         .select('*')
         .order('sort_order', { ascending: true });
 
-      if (!error && data && data.length > 0) {
+      if (error) {
+        console.warn('Supabase slides fetch error, using local cache:', error.message);
+      } else if (data && data.length > 0) {
         this.isConnected = true;
         localStorage.setItem(SLIDES_STORAGE_KEY, JSON.stringify(data));
         return data as TVSlide[];
+      } else if (data && data.length === 0) {
+        // DB is reachable but empty — don't resurrect stale localStorage/seed data.
+        // (Old code only used localStorage when the fetch threw, so a fresh
+        // delete-all in Supabase would be overwritten by cached rows.)
+        this.isConnected = true;
+        localStorage.setItem(SLIDES_STORAGE_KEY, JSON.stringify([]));
+        return [];
       }
     } catch {
-      // Fallback
+      // Network failure — fall through to cache
     }
 
     const local = localStorage.getItem(SLIDES_STORAGE_KEY);
@@ -286,8 +295,11 @@ class DataService {
       finalImageUrl = await this.uploadImage(slide.image_url, 'slides');
     }
 
+    // NOTE: `slides.id` is UUID in Supabase. `crypto.randomUUID()` keeps
+    // inserts valid; the old `slide-<timestamp>` strings caused
+    // "invalid input syntax for type uuid" and the row was never stored.
     const slideToSave: TVSlide = {
-      id: slide.id || `slide-${Date.now()}-${Math.random().toString(36).substring(2, 7)}`,
+      id: slide.id || (typeof crypto !== 'undefined' && 'randomUUID' in crypto ? crypto.randomUUID() : `00000000-0000-4000-8000-${Date.now().toString(16).padStart(12, '0')}`),
       title: slide.title,
       subtitle: slide.subtitle || '',
       badge: slide.badge || '',
@@ -311,7 +323,12 @@ class DataService {
     localStorage.setItem(SLIDES_STORAGE_KEY, JSON.stringify(updated));
 
     try {
-      await supabase.from('slides').upsert(slideToSave);
+      const { data, error } = await supabase.from('slides').upsert(slideToSave).select();
+      if (error) {
+        console.error('Supabase slide save error (local copy kept):', error.message, error);
+      } else {
+        console.log('✅ Slide saved to Supabase:', data);
+      }
     } catch (err) {
       console.warn('Supabase slide save note (using local cache):', err);
     }

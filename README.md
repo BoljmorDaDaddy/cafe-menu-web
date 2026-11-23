@@ -105,7 +105,7 @@ VITE_RAG_API_URL=
 3. Paste and run it in the SQL Editor.
 4. This creates `menu_items`, `slides`, and `cafe_settings` tables with full Row-Level-Security (RLS) and Realtime replication enabled!
 
-> *Note: Even before running the SQL script, the web app functions immediately using synchronized resilient local storage with full demo data.*
+> *Note: The app can run before the SQL script is applied. It starts with an empty menu and uses local storage for locally added menu items, slides, and settings.*
 
 ---
 

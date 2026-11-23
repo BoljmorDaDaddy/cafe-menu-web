@@ -18,6 +18,29 @@ import type { MenuItem, TVSlide, CafeSettings, MenuCategory } from './types';
 import { dataService } from './services/dataService';
 import { INITIAL_MENU_ITEMS, INITIAL_SLIDES, INITIAL_SETTINGS } from './data/initialData';
 import { UtensilsCrossed, Coffee, SearchX } from 'lucide-react';
+import { WinterScene } from './components/WinterScene';
+
+const SNOWFLAKES = [
+  { left: '5%', delay: '-17s', duration: '24s', size: '2.5rem', opacity: 0.55 },
+  { left: '18%', delay: '-8s', duration: '31s', size: '1.5rem', opacity: 0.4 },
+  { left: '32%', delay: '-23s', duration: '27s', size: '3rem', opacity: 0.5 },
+  { left: '47%', delay: '-4s', duration: '34s', size: '1.75rem', opacity: 0.48 },
+  { left: '63%', delay: '-19s', duration: '26s', size: '2.25rem', opacity: 0.42 },
+  { left: '79%', delay: '-11s', duration: '32s', size: '3.25rem', opacity: 0.5 },
+  { left: '94%', delay: '-26s', duration: '29s', size: '1.75rem', opacity: 0.45 },
+  { left: '11%', delay: '-7s', duration: '18s', size: '1.25rem', opacity: 0.36 },
+  { left: '24%', delay: '-13s', duration: '21s', size: '1rem', opacity: 0.34 },
+  { left: '39%', delay: '-3s', duration: '17s', size: '1.75rem', opacity: 0.42 },
+  { left: '55%', delay: '-22s', duration: '19s', size: '1rem', opacity: 0.33 },
+  { left: '71%', delay: '-9s', duration: '16s', size: '1.4rem', opacity: 0.39 },
+  { left: '87%', delay: '-18s', duration: '23s', size: '1.15rem', opacity: 0.35 },
+  { left: '2%', delay: '-5s', duration: '20s', size: '1.65rem', opacity: 0.4 },
+  { left: '49%', delay: '-14s', duration: '22s', size: '1.35rem', opacity: 0.37 },
+  { left: '97%', delay: '-11s', duration: '17s', size: '1.4rem', opacity: 0.38 },
+  { left: '33%', delay: '-1s', duration: '19s', size: '1.1rem', opacity: 0.35 },
+  { left: '60%', delay: '-16s', duration: '21s', size: '1.5rem', opacity: 0.37 },
+  { left: '82%', delay: '-6s', duration: '18s', size: '1rem', opacity: 0.34 },
+];
 
 export default function App() {
   // Navigation View State
@@ -57,13 +80,12 @@ export default function App() {
         const slds = await dataService.getSlides();
         const stgs = await dataService.getSettings();
         
-        // Ensure we never have empty states by falling back to INITIAL_DATA
-        setMenuItems(items && items.length > 0 ? items : INITIAL_MENU_ITEMS);
+        setMenuItems(items);
         setSlides(slds && slds.length > 0 ? slds : INITIAL_SLIDES);
         setSettings(stgs && stgs.id ? stgs : INITIAL_SETTINGS);
       } catch (e) {
         console.error('Critical data fetch error:', e);
-        setMenuItems(INITIAL_MENU_ITEMS);
+        setMenuItems([]);
         setSlides(INITIAL_SLIDES);
         setSettings(INITIAL_SETTINGS);
       }
@@ -185,12 +207,12 @@ export default function App() {
 
   // Popular / Featured items (shown in horizontal grid like Image 1)
   const popularItems = useMemo(() => {
-    return filteredItems.filter((i) => i.is_featured).slice(0, 6);
+    return filteredItems.filter((i) => i.is_featured);
   }, [filteredItems]);
 
   // Best Selling Items (shown as list cards like Image 1 bottom section)
   const bestSellingItems = useMemo(() => {
-    return filteredItems.slice(0, 4);
+    return filteredItems;
   }, [filteredItems]);
 
   // Separate Foods and Drinks
@@ -258,7 +280,24 @@ export default function App() {
 
   // Render Customer-Facing Menu View (Dual-Tone Cream & Espresso Palette matching Image 1 & 2)
   return (
-    <div className="min-h-screen bg-[#fcfbf7] text-[#2d241e] flex flex-col relative selection:bg-[#bfa89e]/30 selection:text-[#2d241e]">
+    <div className="winter-night-shell min-h-screen text-[#F5EBDD] flex flex-col relative selection:bg-[#C49A45]/40 selection:text-white">
+      <div className="winter-snowfall" aria-hidden="true">
+        {SNOWFLAKES.map((flake, index) => (
+          <span
+            key={index}
+            className="winter-snowflake"
+            style={{
+              left: flake.left,
+              animationDelay: flake.delay,
+              animationDuration: flake.duration,
+              fontSize: flake.size,
+              opacity: flake.opacity,
+            }}
+          >
+            ❄
+          </span>
+        ))}
+      </div>
       {/* Dynamic SEO, Schema.org and Meta head tags */}
       <SeoHead view="menu" settings={settings} />
 
@@ -329,10 +368,10 @@ export default function App() {
         {!searchQuery && activeCategory === 'all' && popularItems.length > 0 && (
           <section className="mb-8">
             <div className="flex items-center justify-between mb-4 px-1">
-              <h2 className="text-sm font-bold text-[#123F36] uppercase tracking-wider">Онцлох сонголтууд</h2>
+              <h2 className="text-sm font-bold text-[#F5EBDD] uppercase tracking-wider">Онцлох сонголтууд</h2>
               <button
                 onClick={() => window.scrollTo({ top: 600, behavior: 'smooth' })}
-                className="text-xs font-semibold text-[#C49A45] hover:text-[#123F36] transition-colors"
+                className="text-xs font-semibold text-[#C49A45] hover:text-[#F5EBDD] transition-colors"
               >
                 Бүгдийг харах
               </button>
@@ -356,10 +395,10 @@ export default function App() {
         {!searchQuery && activeCategory === 'all' && bestSellingItems.length > 0 && (
           <section className="mb-10">
             <div className="flex items-center justify-between mb-4 px-1">
-              <h2 className="text-sm font-bold text-[#123F36] uppercase tracking-wider">Хамгийн их захиалдаг</h2>
+              <h2 className="text-sm font-bold text-[#F5EBDD] uppercase tracking-wider">Хамгийн их захиалдаг</h2>
               <button
                 onClick={() => { setActiveType('all'); setActiveCategory('all'); }}
-                className="text-xs font-semibold text-[#C49A45] hover:text-[#123F36] transition-colors"
+                className="text-xs font-semibold text-[#C49A45] hover:text-[#F5EBDD] transition-colors"
               >
                 Бүгдийг харах
               </button>
@@ -383,9 +422,9 @@ export default function App() {
             <div className="flex items-center justify-between mb-4 border-b border-[#d9cfba] pb-3 px-1">
               <div className="flex items-center gap-2">
                 <UtensilsCrossed className="w-4 h-4 text-[#C49A45]" />
-                <h3 className="font-serif text-base font-bold text-[#123F36]">Хоолны Цэс</h3>
+                <h3 className="font-serif text-base font-bold text-[#F5EBDD]">Хоолны Цэс</h3>
               </div>
-              <span className="text-xs text-[#5c6b64] font-medium">{foodItems.length} сонголт</span>
+              <span className="text-xs text-[#D4C8B5] font-medium">{foodItems.length} сонголт</span>
             </div>
 
             <div className="flex flex-col gap-3">
@@ -402,9 +441,9 @@ export default function App() {
             <div className="flex items-center justify-between mb-4 border-b border-[#d9cfba] pb-3 px-1">
               <div className="flex items-center gap-2">
                 <Coffee className="w-4 h-4 text-[#C49A45]" />
-                <h3 className="font-serif text-base font-bold text-[#123F36]">Уух Зүйлс</h3>
+                <h3 className="font-serif text-base font-bold text-[#F5EBDD]">Уух Зүйлс</h3>
               </div>
-              <span className="text-xs text-[#5c6b64] font-medium">{drinkItems.length} сонголт</span>
+              <span className="text-xs text-[#D4C8B5] font-medium">{drinkItems.length} сонголт</span>
             </div>
 
             <div className="flex flex-col gap-3">
@@ -436,6 +475,8 @@ export default function App() {
 
       {/* Luxury Cafe Footer */}
       <Footer settings={settings} onNavigate={navigateTo} />
+      <WinterScene />
+      <div className="winter-snowdrift" aria-hidden="true" />
     </div>
   );
 }

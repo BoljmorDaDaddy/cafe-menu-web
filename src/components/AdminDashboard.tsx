@@ -723,10 +723,10 @@ ALTER PUBLICATION supabase_realtime ADD TABLE public.cafe_settings;`;
             <div className="p-4 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-between">
               <div>
                 <h5 className="text-xs font-bold text-stone-300">
-                  Цэсийг анхны жишээ өгөгдлөөр сэргээх
+                  Цэсийг хоосолж, слайд ба тохиргоог сэргээх
                 </h5>
                 <p className="text-[11px] text-stone-500">
-                  Хэрэв анхны 25+ хоол, ундаа болон слайдуудыг буцаан сэргээхийг хүсвэл ашиглана уу.
+                  Энэ товч цэсийг хоосолж, анхны слайд болон тохиргоог сэргээнэ.
                 </p>
               </div>
               <button

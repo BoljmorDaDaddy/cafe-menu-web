@@ -71,6 +71,309 @@
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
+.holiday-lights {
+  position: relative;
+  height: 6px;
+  overflow: hidden;
+  background: linear-gradient(
+    to bottom,
+    transparent 1px,
+    rgba(217, 182, 90, 0.5) 1px 2px,
+    transparent 2px
+  );
+}
+
+.holiday-lights::before {
+  position: absolute;
+  inset: 1px 8px 0;
+  content: '';
+  background-image:
+    radial-gradient(circle, #c95750 0 2px, transparent 2.5px),
+    radial-gradient(circle, #d9b65a 0 2px, transparent 2.5px),
+    radial-gradient(circle, #75a879 0 2px, transparent 2.5px);
+  background-size: 48px 6px;
+  background-position: 0 0, 16px 0, 32px 0;
+  background-repeat: repeat-x;
+}
+
+.holiday-menu-card {
+  position: relative;
+  border-color: rgba(217, 182, 90, 0.3);
+  background: linear-gradient(135deg, #142B3B 0%, #0C1E2D 100%);
+  box-shadow: inset 0 0 0 1px rgba(217, 182, 90, 0.1), 0 4px 14px rgba(2, 10, 16, 0.2);
+}
+
+.holiday-menu-card::before {
+  position: absolute;
+  z-index: 3;
+  top: 4px;
+  right: 12px;
+  width: 30px;
+  height: 6px;
+  content: '';
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 3px 3px, #C95750 0 2px, transparent 2.5px) 0 0 / 10px 6px no-repeat,
+    radial-gradient(circle at 3px 3px, #D9B65A 0 2px, transparent 2.5px) 10px 0 / 10px 6px no-repeat,
+    radial-gradient(circle at 3px 3px, #75A879 0 2px, transparent 2.5px) 20px 0 / 10px 6px no-repeat;
+}
+
+.holiday-menu-card:hover {
+  border-color: rgba(217, 182, 90, 0.48);
+  box-shadow: inset 0 0 0 1px rgba(217, 182, 90, 0.16), 0 8px 20px rgba(2, 10, 16, 0.28);
+}
+
+.holiday-card-copy {
+  background-image:
+    linear-gradient(rgba(217, 182, 90, 0.09) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(217, 182, 90, 0.09) 1px, transparent 1px);
+  background-size: 22px 22px;
+  box-shadow: inset 0 0 18px rgba(217, 182, 90, 0.045);
+}
+
+.holiday-card-copy h3,
+.holiday-card-copy h4,
+.holiday-menu-card h3,
+.holiday-menu-card h4,
+.holiday-menu-card .font-serif {
+  color: #F5EBDD;
+}
+
+.holiday-card-copy p,
+.holiday-card-copy span:not(.font-serif) {
+  color: #C3D0D8;
+}
+
+.winter-night-shell {
+  position: relative;
+  isolation: isolate;
+  background-color: #081521;
+  background-image:
+    radial-gradient(circle at 5% 22rem, rgba(255, 216, 151, 0.9) 0 2px, rgba(255, 189, 117, 0.38) 5px, rgba(255, 172, 100, 0.1) 30px, transparent 150px),
+    radial-gradient(ellipse 11rem 22rem at 5% 30rem, rgba(255, 177, 98, 0.13), transparent 82%),
+    radial-gradient(circle at 96% 41rem, rgba(255, 216, 151, 0.85) 0 2px, rgba(255, 189, 117, 0.35) 5px, rgba(255, 172, 100, 0.09) 28px, transparent 142px),
+    radial-gradient(ellipse 12rem 24rem at 96% 50rem, rgba(255, 177, 98, 0.12), transparent 84%),
+    radial-gradient(ellipse at 50% 100%, rgba(92, 133, 151, 0.18), transparent 48%),
+    linear-gradient(180deg, #081521 0%, #102633 58%, #142C36 100%);
+  background-attachment: fixed;
+}
+
+.winter-night-shell > main {
+  position: relative;
+  z-index: 1;
+}
+
+.winter-story-scene {
+  position: relative;
+  z-index: 2;
+  width: min(1200px, 100%);
+  margin: clamp(-130px, -11vw, -44px) auto -12px;
+  line-height: 0;
+  pointer-events: none;
+}
+
+.winter-story-scene svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 10px 24px rgba(2, 10, 16, 0.3));
+}
+
+.winter-cloud-footer {
+  position: relative;
+  z-index: 0;
+  isolation: isolate;
+  overflow: visible;
+  border-top: 0;
+  background: transparent;
+}
+
+.winter-footer-cloud-art {
+  position: absolute;
+  z-index: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: clamp(945px, 112.5vw, 1440px);
+  pointer-events: none;
+}
+
+.winter-footer-cloud-art svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.winter-modal-backdrop {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  overflow: hidden;
+  background: #071321;
+  pointer-events: none;
+}
+
+.winter-modal-sky {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.winter-modal-ger {
+  position: absolute;
+  z-index: 1;
+  bottom: -8px;
+  left: 50%;
+  width: min(600px, 112%);
+  margin: 0;
+  transform: translateX(-50%);
+}
+
+.winter-modal-tint {
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  background: rgba(3, 9, 17, 0.48);
+  backdrop-filter: blur(1.5px);
+  pointer-events: none;
+}
+
+.winter-santa-flight {
+  animation: winter-santa-crossing 27s linear infinite;
+  will-change: transform;
+}
+
+.ger-smoke-wisp {
+  stroke-dasharray: 5 5;
+  transform-box: fill-box;
+  transform-origin: bottom center;
+  animation: ger-smoke-rise 9s ease-out infinite;
+  filter: drop-shadow(0 0 3px rgba(239, 248, 252, 0.26));
+}
+
+.ger-smoke-wisp--two {
+  animation-delay: -3s;
+}
+
+.ger-smoke-wisp--three {
+  animation-delay: -6s;
+}
+
+@keyframes ger-smoke-rise {
+  0% {
+    opacity: 0;
+    stroke-dashoffset: 18;
+    transform: translate3d(0, 5px, 0) scale(0.75);
+    filter: blur(0);
+  }
+  18% {
+    opacity: 0.58;
+  }
+  72% {
+    opacity: 0.3;
+    stroke-dashoffset: -13;
+    transform: translate3d(-3px, -14px, 0) scale(1.12);
+  }
+  100% {
+    opacity: 0;
+    stroke-dashoffset: -30;
+    transform: translate3d(5px, -30px, 0) scale(1.5);
+    filter: blur(2px);
+  }
+}
+
+@keyframes winter-santa-crossing {
+  from { transform: translateX(0); }
+  to { transform: translateX(-700px); }
+}
+
+.winter-snowfall {
+  position: fixed;
+  z-index: 30;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.winter-snowflake {
+  position: absolute;
+  top: -9vh;
+  display: block;
+  color: #F4F9FC;
+  font-family: "Segoe UI Symbol", "Apple Symbols", sans-serif;
+  line-height: 1;
+  text-shadow: 0 0 12px rgba(221, 239, 248, 0.38);
+  animation: winter-snow-fall linear infinite;
+  will-change: transform;
+}
+
+.winter-snowflake:nth-child(even) {
+  animation-name: winter-snow-fall-left;
+}
+
+@keyframes winter-snow-fall {
+  from { transform: translate3d(0, -4vh, 0) rotate(0deg); }
+  to { transform: translate3d(7vw, 118vh, 0) rotate(260deg); }
+}
+
+@keyframes winter-snow-fall-left {
+  from { transform: translate3d(0, -6vh, 0) rotate(0deg); }
+  to { transform: translate3d(-6vw, 118vh, 0) rotate(-220deg); }
+}
+
+.winter-snowdrift {
+  position: relative;
+  z-index: 3;
+  height: 96px;
+  margin-top: -24px;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.winter-snowdrift::before,
+.winter-snowdrift::after {
+  position: absolute;
+  content: '';
+  bottom: -40px;
+  background: linear-gradient(180deg, #F9FCFE 0%, #E5EEF3 100%);
+  box-shadow: 0 -10px 30px rgba(220, 239, 248, 0.2);
+}
+
+.winter-snowdrift::before {
+  left: -6%;
+  width: 112%;
+  height: 116px;
+  border-radius: 50% 50% 0 0 / 48% 48% 0 0;
+}
+
+.winter-snowdrift::after {
+  left: -10%;
+  width: 66%;
+  height: 102px;
+  bottom: -49px;
+  border-radius: 50% 54% 0 0 / 48% 52% 0 0;
+  background: linear-gradient(180deg, #FFFFFF 0%, #EEF5F8 100%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .winter-snowfall {
+    display: none;
+  }
+
+  .winter-santa-flight {
+    animation: none;
+    transform: translateX(-250px);
+  }
+
+  .ger-smoke-wisp {
+    animation: none;
+    opacity: 0.42;
+    filter: blur(0.5px);
+  }
+}
+
 /* ── Animation keyframes ─────────────────────────────── */
 @keyframes fadeIn {
   from { opacity: 0; }

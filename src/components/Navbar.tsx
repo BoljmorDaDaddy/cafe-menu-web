@@ -1,5 +1,5 @@
 import React from 'react';
-import { Search, Bell, Menu, ShieldCheck, Tv, Sparkles, X } from 'lucide-react';
+import { Search, Bell, Menu, ShieldCheck, Tv, Sparkles, TreePine, X } from 'lucide-react';
 import type { CafeSettings } from '../types';
 
 interface NavbarProps {
@@ -30,6 +30,10 @@ export const Navbar: React.FC<NavbarProps> = ({
         <div className="flex items-center gap-2 shrink-0">
           <img src="/src/assets/logo.png" alt="Mo's Cafe Logo" className="w-8 h-8 object-contain" />
           <span className="font-serif font-bold text-sm sm:text-base tracking-tight">Mo's Cafe</span>
+          <span className="relative ml-0.5 text-[#D9B65A]" aria-hidden="true">
+            <TreePine className="w-4 h-4" strokeWidth={2.2} />
+            <span className="absolute left-[6px] top-[5px] w-1 h-1 rounded-full bg-[#C95750] ring-1 ring-[#123F36]" />
+          </span>
         </div>
 
         {/* Center: Search Bar */}
@@ -67,6 +71,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           </button>
         </div>
       </div>
+      <div className="holiday-lights" aria-hidden="true" />
     </header>
   );
 };

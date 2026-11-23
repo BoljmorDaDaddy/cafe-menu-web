@@ -5,6 +5,10 @@ import { INITIAL_MENU_ITEMS, INITIAL_SLIDES, INITIAL_SETTINGS } from '../data/in
 const MENU_STORAGE_KEY = 'aura_cafe_menu_items_v1';
 const SLIDES_STORAGE_KEY = 'aura_cafe_tv_slides_v1';
 const SETTINGS_STORAGE_KEY = 'aura_cafe_settings_v1';
+const LEGACY_SEED_MENU_ITEM_ID = /^item-(?:bf|sp|mn|sl|cf|cd|te)-\d+$/;
+
+const withoutLegacySeedMenuItems = (items: MenuItem[]): MenuItem[] =>
+  items.filter((item) => !LEGACY_SEED_MENU_ITEM_ID.test(item.id));
 
 class DataService {
   private listeners: Set<() => void> = new Set();
@@ -119,8 +123,9 @@ class DataService {
 
       if (!error && data && data.length > 0) {
         this.isConnected = true;
-        localStorage.setItem(MENU_STORAGE_KEY, JSON.stringify(data));
-        return data as MenuItem[];
+        const items = withoutLegacySeedMenuItems(data as MenuItem[]);
+        localStorage.setItem(MENU_STORAGE_KEY, JSON.stringify(items));
+        return items;
       }
     } catch {
       // Supabase table may not be created yet, fallback gracefully
@@ -130,15 +135,22 @@ class DataService {
     const local = localStorage.getItem(MENU_STORAGE_KEY);
     if (local) {
       try {
-        return JSON.parse(local);
+        const parsed = JSON.parse(local) as MenuItem[];
+        if (Array.isArray(parsed)) {
+          const items = withoutLegacySeedMenuItems(parsed);
+          if (items.length !== parsed.length) {
+            localStorage.setItem(MENU_STORAGE_KEY, JSON.stringify(items));
+          }
+          return items;
+        }
       } catch (e) {
         console.error('Failed to parse local menu data', e);
       }
     }
 
-    // Default seed
-    localStorage.setItem(MENU_STORAGE_KEY, JSON.stringify(INITIAL_MENU_ITEMS));
-    return INITIAL_MENU_ITEMS;
+    // Start with an empty menu until the cafe adds its own items.
+    localStorage.setItem(MENU_STORAGE_KEY, JSON.stringify([]));
+    return [];
   }
 
   public async saveMenuItem(item: Partial<MenuItem> & { name: string; category: MenuCategory; price: number; image_url: string }): Promise<MenuItem> {

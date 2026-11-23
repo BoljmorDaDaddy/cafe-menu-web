@@ -19,7 +19,7 @@ export const MenuCard: React.FC<MenuCardProps> = ({ item, onSelect }) => {
           onSelect(item);
         }
       }}
-      className={`group relative bg-white rounded-2xl border border-[#d9cfba] shadow-sm hover:shadow-md transition-all duration-250 cursor-pointer flex flex-row items-stretch overflow-hidden h-[110px] sm:h-[120px] ${
+      className={`holiday-menu-card group relative bg-white rounded-2xl border border-[#d9cfba] shadow-sm hover:shadow-md transition-all duration-250 cursor-pointer flex flex-row items-stretch overflow-hidden h-[110px] sm:h-[120px] ${
         !item.is_available ? 'opacity-60' : ''
       }`}
     >
@@ -41,7 +41,7 @@ export const MenuCard: React.FC<MenuCardProps> = ({ item, onSelect }) => {
       </div>
 
       {/* Right: Text content */}
-      <div className="flex-1 flex flex-col justify-between p-4 min-w-0">
+      <div className="holiday-card-copy flex-1 flex flex-col justify-between p-4 min-w-0">
         <div className="min-w-0">
           <h3 className="font-semibold text-base text-[#123F36] group-hover:text-[#2A6B5C] line-clamp-2 leading-snug">
             {item.name}
